@@ -1,0 +1,415 @@
+::: {style="background-color: #f0f0f0; border: 1px solid #000; padding: 10px;"}
+<h5 style="text-align: left;">
+<b>Kelompok 4</b>
+</h5>
+<ul>
+<li>Nabhan Nabilah (4112321013)</li>
+<li>Tangkas Pangestu (4112321021)</li>
+<li>Indah Fitri Auliya (4112321031)</li>
+</ul>
+:::
+
+&nbsp;
+
+<h1 style="text-align: center;">
+<b>BAB 14</b>
+</h1>
+<h1 style="text-align: center;">
+<b>ANALISIS DISKRIMINAN</b>
+</h1>
+
+&nbsp;
+
+<p style="text-align: justify;">
+Analisis diskriminan digunakan dalam situasi di mana cluster diketahui secara apriori. Tujuan analisis diskriminan adalah untuk mengklasifikasikan suatu observasi, atau beberapa observasi, ke dalam kelompok-kelompok yang diketahui tersebut. Misalnya, dalam credit scoring, bank mengetahui dari pengalaman masa lalu bahwa ada nasabah yang baik (yang membayar kembali pinjamannya tanpa masalah) dan nasabah yang buruk (yang menunjukkan kesulitan dalam membayar kembali pinjamannya). Ketika nasabah baru meminta pinjaman, bank harus memutuskan apakah akan memberikan pinjaman atau tidak.. Catatan masa lalu bank menyediakan dua kumpulan data: pengamatan multivariat $xi$ pada dua kategori nasabah (termasuk, misalnya, usia, gaji, status perkawinan, jumlah pinjaman, dll.). Pelanggan baru adalah observasi baru $x$ dengan variabel yang sama. Aturan diskriminasi harus mengklasifikasikan pelanggan ke dalam salah satu dari dua kelompok yang ada dan analisis diskriminan harus mengevaluasi risiko kemungkinan "keputusan buruk".
+</p>
+
+<p style="text-align: justify;">
+Banyak contoh lain yang dijelaskan di bawah ini, dan di sebagian besar penerapan, kelompok tersebut sesuai dengan klasifikasi alami atau kelompok yang diketahui dari sejarah (seperti dalam contoh penilaian kredit). Kelompok-kelompok ini bisa saja dibentuk melalui analisis klaster yang dilakukan pada data masa lalu.
+</p>
+
+<p style="text-align: justify;">
+Bagian 14.1 menyajikan aturan alokasi ketika populasi diketahui, yaitu ketika kita mengetahui sebaran setiap populasi. Seperti yang dijelaskan dalam Sekte. 14.2, dalam praktiknya, karakteristik populasi harus diperkirakan berdasarkan sejarah. Metodenya diilustrasikan dalam beberapa contoh.
+</p>
+
+&nbsp;
+
+## 14.1 Aturan Alokasi untuk Distribusi yang Diketahui
+
+<p style="text-align: justify;">
+Analisis diskriminan adalah seperangkat metode dan alat yang digunakan untuk membedakan kelompok populasi $\prod _{j}$ dan untuk menentukan bagaimana mengalokasikan observasi baru ke dalam kelompok. Dalam salah satu contoh yang kita jalankan, kita tertarik untuk membedakannya uang kertas palsu dan asli berdasarkan pengukuran uang kertas tersebut, lihat sekte.B.2. Dalam hal ini, kita memiliki dua kelompok (uang kertas palsu dan asli) dan kita ingin membuat algoritma (aturan) yang dapat mengalokasikan observasi baru (selembar uang kertas baru) ke dalam salah satu kelompok.
+</p>
+
+<p style="text-align: justify;">
+Contoh lainnya adalah pendeteksian konsumen baru yang "cepat" dan "lambat" produk yang diperkenalkan. Dengan menggunakan karakteristik konsumen seperti pendidikan, pendapatan, ukuran keluarga, dan jumlah perpindahan merek sebelumnya, kita ingin mengklasifikasikan setiap konsumen menjadi dua kelompok yang baru saja diidentifikasi.
+</p>
+
+<p style="text-align: justify;">
+Dalam puisi dan studi sastra, frekuensi kata-kata yang diucapkan atau ditulis dan panjang kalimat menunjukkan profil seniman dan penulis yang berbeda.Itu bisa berupa minat untuk mengatribusikan karya sastra atau seni yang tidak diketahui kepada penulis tertentu dengan tujuan tertentu profil. Langkah-langkah antropologis pada patung-patung kuno membantu dalam membedakannya tubuh laki-laki dan perempuan.Peringkat risiko kredit yang baik dan buruk merupakan suatu diskriminasi permasalahan yang mungkin dapat diatasi dengan menggunakan pengamatan terhadap pendapatan, umum, jumlah kredit kartu, ukuran keluarga, dll.
+</p>
+
+<p style="text-align: justify;">
+Secara umum, kita mempunyai populasi $\prod _{j}j=1,2,...,J$ dan kita harus mengalokasikan pengamatan $x$ ke salah satu kelompok ini. Aturan yang *diskriminatif* adalah pemisahan ruang sampel (umumnya $\mathbb{R}^{p}$) kedalam himpunan $R_{j}$ sehingga jika $x\epsilon R_{j}$, maka didefinisikan sebagai anggota populasi $\prod _{j}$.
+</p>
+
+<p style="text-align: justify;">
+Tugas utama analisis diskriminan adalah menemukan daerah $R_{j}$ yang "baik" sehingga kesalahan-kesalahan klasifikasi kecil. Berikut ini kita uraikan aturan-atturan tersebut ketika sebaran penduduk diketahui.
+</p>
+
+&nbsp;
+
+### *Aturan Diskriminasi Kemungkinan Maksimum (Maximum Likelihood)*
+
+<p style="text-align: justify;">
+Nyatakan kepadatan setiap popuulasi $\prod _{j}$ dengan $f_{j}(x)$. *Aturan diskriminasi kemungkinan maksimum* (aturan ML) diberikan dengan mengalokasikan $x$ ke $\prod _{j}$ untuk memaksimalkan kemungkinan $L_{j}(x)=f_{j}(x)$ arg $max_{i}f_{i}(x)$.
+</p>
+
+<p style="text-align: justify;">
+Jika beberapa $f_{i}$ memberikan nilai maksimum yang sama maka salah satu dari $f_{i}$ tersebut dapat dipilih. Matematika secara otomatis, himpunan $R_{j}$ yang diberikan oleh aturan diskriminasi ML didefinisikan sebagai
+</p>
+
+$$R_{j}=\left\{x:L_{j}(x) >L_{i}(x) untuk  i=1,...,J,i\neq j\right\}$$
+
+<p style="text-align: justify;">
+Dengan mengklasifikasikan observasi ke dalam kelompok tertentu kita mungkin menemui kesalahan klasifikasi. Untuk $J=2$ kelompok peluang memasukkan $x$ ke ddalam kelompok 2 meskipun itu dari populasi 1 dapat dihitung sebagai
+</p>
+
+$$p_{21}=P(X \epsilon R_{2}|\prod _{1})=\int_{R_{1}}f_{1}(x)dx.$$
+
+<p style="text-align: justify;">
+Demikian pula probabilitas bersyarat untuk mengklasifikasikan suatu objek sebagai milik yang pertama populasi $\prod _{1}$ meskipun sebenarnya berasal dari $\prod _{2}$ tersebut $$p_{12}=P(X \epsilon R_{1}|\prod _{2})=\int_{R_{1}}f_{2}(x)dx.$$
+</p>
+
+<p style="text-align: justify;">
+Pengamatan yang salah klasifikasi menimbulkan biaya $C(i|j)$ kettika pengamatan $\prod _{j}$ ditugaskan ke $R_{i}$. Dalam contoh risiko kredit, ini mungkin merupakan biaya kredit yang "masam". Struktur biaya dapat digambarkan dalam matriks biaya :
+</p>
+
+![](images/confusion_matrix.jpg)
+
+<p style="text-align: justify;">
+Misalnya $\pi _{j}$ adalah probabilitas prior dari populasi $\prod _{j}$, dengan "prior" berarti probabilitas *sebuah priori* bahwa individu yang dipilih secara acak adalah anggota $\prod _{j}$ (yaitu, sebelum melihat nilai $x$). Probabilitas sebelumnya harus dipertimbangkan jika sudah jelas sebelumnya bahwa suatu observasi kemungkinan besar berasal dari populasi tertentu $\prod _{j}$. Contohnya adalah klasifikasi nada musik. Jika diketahui bahwa dalam jangka waktu tertentu sebagian besar lagu diciptakan oleh komposer tertentu, maka kemungkinan besar lagu tertentu diciptakan oleh komposer tersebut. Oleh karena itu, ia harus menerima probabilitas prioritas yang lebih tinggi ketika lagu ditugaskan ke grup tertentu.
+</p>
+
+&nbsp;
+
+*Perkiraan biaya kesalahan klasifikasi* (*ECM*) diberikan oleh
+
+$$ECM=C(2|1)p_{21}\pi _{1}+C(1|2)p_{12}\pi _{2}$$
+
+<p style="text-align: justify;">
+Kita akan tertarik pada aturan klasifikasi yang menjaga *ECM* tetap kecil atau meminimalkannya pada suatu kelas aturan. Aturan diskriminan yang meminimalkan *ECM* (14.4) untuk dua populasi diberikan di bawah ini.
+</p>
+
+**Teorema 14.1** *Untuk dua populasi tertentu, aturan minimalisasi ECM diberikan oleh*
+
+$$R_{1}=\left\{ x:\frac{x:f_{1}(x)}{f_{2}(x)}\geqslant \left ( \frac{C(1|2)}{C(2|1)}\right )\left ( \frac{\pi _{2}}{\pi _{1}} \right )\right\}$$ $$R_{2}=\left\{ x:\frac{x:f_{1}(x)}{f_{2}(x)}< \left ( \frac{C(1|2)}{C(2|1)} \right )\left ( \frac{\pi _{2}}{\pi _{1}} \right )\right\}$$
+
+<p style="text-align: justify;">
+Oleh karena itu, aturan diskriminan ML merupakan kasus khusus dari aturan ECM untuk biaya kesalahan klasifikasi yang sama dan probabilitas sebelumnya yang sama. Untuk menyederhanakan kasus biaya kesatuan, $C(1|2)=C(2|1)=1$, dan probabilitas prior yang sama, $\pi _{2}=\pi _{1}$, diasumsikan sebagai berikut.
+</p>
+
+Teorema 14.1 akan dibuktikan dengan contoh credit scoring.
+
+<p style="text-align: justify;">
+*Contoh 14.1* Misalkan $\prod _{1}$ mewakili populasi klien buruk yang menimbulkan biaya $C(1|2)$ jika mereka diklasifikasikan sebagai klien baik. Secara analogi, definisikan $C(2|1)$ sebagai biaya kehilangan klien baik yang diklasifikasikan sebagai klien buruk. Misalkan ÿ menunjukkan keuntungan bank untuk klasifikasi yang benar dari klien yang baik.Maka total keuntungan bank adalah $$G(R_{2})= -C(2|1)\pi _{1}\int I(x\epsilon R_{2})f_{1}(x)dx-C(1|2)\pi _{2}\int \left\{ 1-I(X\epsilon R_{2})\right\}f_{2}(x)dx+\gamma \pi _{2}\int I(x\epsilon R_{2})f_{2}(x)dx$$ $$=-C(1|2)\pi _{2} +\int I(x\epsilon R_{2})\left\{ -C(2|1)\pi _{1}f_{1}(x)+(C(1|2)+\gamma )\pi _{2}f_{2}(x)\right\}dx$$
+</p>
+
+Karena suku pertama persamaan ini konstan, maka nilai maksimum jelas diperoleh
+
+$$R_{2}=\left\{ x:-C(2|1)\pi _{1}f_{1}(x)+\left\{ C(1|2)+\gamma \right\}\pi _{2}f_{2}(x)\geq 0\right\}.$$
+
+Ini setara dengan
+
+$$R_{2}=\left\{ x:\frac{f_{2}(x)}{f_{1}(x)}\geq \frac{C(2|1)\pi _{1}}{\left\{C(1|2) +\gamma \right\}\pi _{2}}\right\}$$
+
+yang sesuai dengan himpunan $R_{2}$ dalam Teorema 14.1 untuk penguatan $\gamma =0.$
+
+*Contoh 14.2* Misalkan $x\epsilon \left\{ 0,1\right\}$ dan
+
+$$\prod _{1}:P(X=0)=P(X=1)=\frac{1}{2}$$ $$\prod _{2}:P(X=0)=\frac{1}{4}=1-P(X=1).$$
+
+Ruang sampelnya adalah himpunan $\left\{0,1 \right\}$. Aturan diskriminan ML adalah mengalokasikan $x=0$ ke $\prod _{1}$ dan $x=1$ ke $\prod _{2}$, dengan mendefinisikan himpunan $R_{1}=\left\{ 0\right\},R_{2}=\left\{ 1\right\}$ dan $R_{1}\bigcup R_{2}=\left\{ 0,1\right\}.$
+
+*Contoh 14.3* Perhatikan dua populasi normal
+
+$$\prod _{1}:N(\mu _{1},\sigma _{1}^{2}),$$ $$\prod _{2}:N(\mu _{2},\sigma _{2}^{2}).$$
+
+Kemudian
+
+$$L_{i}(x)=(2\sigma _{i}^{2})^{-1/2}exp\left\{ -\frac{1}{2}\left ( \frac{x-\mu _{i}}{\sigma _{i}} \right )^{2}\right\}.$$
+
+Oleh karena itu $x$ dialokasikan ke $\prod _{1}(x\epsilon R_{1})$ jika $L_{1}(x)\geq L_{2}(x)$. Perhatikan bahwa $L_{1}(x)\geq L_{2}(x)$ equivalen dengan
+
+$$\frac{\sigma _{2}}{\sigma _{1}}exp\left [ -\frac{1}{2} \left\{ \left ( \frac{x-\mu _{1}}{\sigma _{1}}\right )^{2}-\left ( \frac{x-\mu _{2}}{\sigma _{2}} \right )^{2}\right\}\right ]\geq 1$$ atau $$x^{2}\left ( \frac{1}{\sigma _{1}^{2}}-\frac{1}{\sigma _{2}^{2}} \right )-2x\left ( \frac{\mu _{1}}{\sigma _{1}^{2}} -\frac{\mu _{2}}{\sigma _{2}^{2}}\right )+\left ( \frac{\mu _{1}^{2}}{\sigma _{1}^{2}} -\frac{\mu _{2}^{2}}{\sigma _{2}^{2}}\right )\leq 2log\frac{\sigma _{2}}{\sigma _{1}}.$$
+
+Gambar 14.1 Maksimum aturan kemungkinan untuk normal distribusi MVAdisnorm
+
+```{r}
+# clear all variables
+rm(list = ls(all = TRUE))
+graphics.off()
+
+x 	= seq(-4, 4, 0.05)  	# generates a sequence on real axis
+s1 	= 0.1  			# standard deviation for y1
+mu1 	= 0.2  			# mean for y1
+s2 	= 0.1  			# square root of variance for y2
+mu2 	= -0.6  		# mean for y2
+
+y1 = cbind(x, dnorm(x, mean = mu1, sd = s1))  # density y1
+y2 = cbind(x, dnorm(x, mean = mu2, sd = s2))  # density y2
+
+if (mu1 != mu2 & s1 != s2) {
+  
+  # first discrimination point
+  c1 = -(mu2 * s1^2 - mu1 * s2^2)/(s2^2 - s1^2) + sqrt(((mu2 * s1^2 - mu1 * s2^2)/(s2^2 - 
+                                                                                     s1^2))^2 - ((mu1^2 * s2^2 - mu2^2 * s1^2 - 2 * log(s2/s1) * s1^2 * s2^2)/(s2^2 - 
+                                                                                                                                                                 s1^2)))
+  
+  # second discrimination point
+  c2 = -(mu2 * s1^2 - mu1 * s2^2)/(s2^2 - s1^2) - sqrt(((mu2 * s1^2 - mu1 * s2^2)/(s2^2 - 
+                                                                                     s1^2))^2 - ((mu1^2 * s2^2 - mu2^2 * s1^2 - 2 * log(s2/s1) * s1^2 * s2^2)/(s2^2 - 
+                                                                                                                                                                 s1^2)))
+} else if (mu1 != mu2 & s1 == s2) {
+  if (mu2 < 0 & mu1 < 0) {
+    c1 = mu2 - (mu2 - mu1)/2
+    c2 = c1
+  } else if (mu2 < 0 & mu1 >= 0) {
+    c1 = mu2 - (mu2 - mu1)/2
+    c2 = c1
+  } else if (mu2 == 0 & mu1 < 0) {
+    c1 = -abs(mu2 - mu1)/2
+    c2 = c1
+  } else if (mu2 > 0 & mu1 < 0) {
+    c1 = mu2 - abs(mu2 - mu1)/2
+    c2 = c1
+  } else if (mu2 >= 0 & mu1 >= 0) {
+    c1 = abs(mu2 - mu1)/2
+    c2 = c1
+  }
+} else if (mu1 == mu2 & s1 == s2) {
+  c1 = Inf
+  c2 = -Inf
+} else if (mu1 == mu2 & s1 != s2) {
+  
+  # first discrimination point
+  c1 = -(mu2 * s1^2 - mu1 * s2^2)/(s2^2 - s1^2) + sqrt(((mu2 * s1^2 - mu1 * s2^2)/(s2^2 - 
+                                                                                     s1^2))^2 - ((mu1^2 * s2^2 - mu2^2 * s1^2 - 2 * log(s2/s1) * s1^2 * s2^2)/(s2^2 - 
+                                                                                                                                                                 s1^2)))
+  
+  # second discrimination point
+  c2 = -(mu2 * s1^2 - mu1 * s2^2)/(s2^2 - s1^2) - sqrt(((mu2 * s1^2 - mu1 * s2^2)/(s2^2 - 
+                                                                                     s1^2))^2 - ((mu1^2 * s2^2 - mu2^2 * s1^2 - 2 * log(s2/s1) * s1^2 * s2^2)/(s2^2 - 
+                                                                                                                                                                 s1^2)))
+}
+
+limy = c(0, max(y1[, 2], y2[, 2]))
+if (limy[2] < 0.4) {
+  limy = c(0, 0.41)
+}
+
+# Plot
+plot(y2, type = "l", lwd = 2, lty = 2, col = "blue", xlab = "", ylab = "Densities", 
+     cex.lab = 1.2, cex.axis = 1.2, ylim = limy)
+lines(y1, type = "l", lwd = 2, col = "red")
+abline(v = c1, lwd = 3)
+abline(v = c2, lwd = 3)
+
+if (c1 == c2 & s1 == s2) {
+  if (mu2 < 0) {
+    text(c1 - 1, 0.4, "R2", col = "red")
+    text(c1 + 1, 0.4, "R1", col = "red")
+  } else {
+    text(c1 - 1, 0.4, "R1", col = "red")
+    text(c1 + 1, 0.4, "R2", col = "red")
+  }
+} else if (c1 != c2 & s2 > s1) {
+  if (mu1 > mu2) {
+    if (s1 >= 1) {
+      text(c1 - 1, 0.4, "R2", col = "red")
+      text(c1 + 0.8, 0.4, "R1", col = "red")
+      text(c2 - 0.8, 0.4, "R1", col = "red")
+    } else if (s1 >= 0 & s1 < 0.5) {
+      text(c1 - s1 - 0.15, 0.4, "R2", col = "red")
+      text(c1 + 0.5, 0.4, "R1", col = "red")
+      text(c2 - 0.4, 0.4, "R1", col = "red")
+    } else if (s1 >= 0.5 & s1 < 1) {
+      text(c1 - 1, 0.4, "R2", col = "red")
+      text(c1 + 0.5, 0.4, "R1", col = "red")
+      text(c2 - 0.4, 0.4, "R1", col = "red")
+    }
+    
+    # text(c1-1,0.4,'R1',col='red') text(c1+1,0.4,'R2',col='red')
+    # text(c2-0.4,0.4,'R2',col='red')
+  } else if (mu1 < mu2) {
+    text(c1 - 1, 0.4, "R1", col = "red")
+    text(c1 + 1, 0.4, "R2", col = "red")
+    text(c2 - 0.4, 0.4, "R2", col = "red")
+  } else if (mu1 == mu2) {
+    text(c1 - s1 - 0.1, 0.4, "R1", col = "red")
+    text(c1 + 1, 0.4, "R2", col = "red")
+    text(c2 - 0.4, 0.4, "R2", col = "red")
+  }
+} else if (c1 != c2 & s2 < s1) {
+  if (mu1 > mu2) {
+    text(c1 - 1, 0.4, "R2", col = "red")
+    text(c1 + 1, 0.4, "R1", col = "red")
+    text(c2 - 0.6, 0.4, "R1", col = "red")
+  } else if (mu1 < mu2) {
+    if (s2 >= 1) {
+      text(c1 - 1, 0.4, "R2", col = "red")
+      text(c1 + 0.8, 0.4, "R1", col = "red")
+      text(c2 - 0.8, 0.4, "R1", col = "red")
+    } else if (s2 >= 0 & s2 < 0.5) {
+      text(c1 - s2 - 0.15, 0.4, "R2", col = "red")
+      text(c1 + 0.5, 0.4, "R1", col = "red")
+      text(c2 - 0.4, 0.4, "R1", col = "red")
+    } else if (s2 >= 0.5 & s2 < 1) {
+      text(c1 - 1, 0.4, "R2", col = "red")
+      text(c1 + 0.5, 0.4, "R1", col = "red")
+      text(c2 - 0.4, 0.4, "R1", col = "red")
+    }
+  } else if (mu1 == mu2) {
+    text(c1 - 1, 0.4, "R2", col = "red")
+    text(c1 + 1, 0.4, "R1", col = "red")
+    text(c2 - 0.4, 0.4, "R1", col = "red")
+  }
+} else if (c1 != c2 & mu1 == mu2) {
+  text(c1 - 1, 0.4, "R1", col = "red")
+  text(c1 + 1, 0.4, "R2", col = "red")
+  text(c2 - 0.4, 0.4, "R2", col = "red")
+}
+
+title("2 Normal distributions", cex.main = 1.8) 
+
+```
+
+![](images/graph.jpg)
+
+Misalkan $\mu _{1}=0,\sigma _{1}=1$ dan $\mu _{2}=1,\sigma _{2}=\frac{1}{2}$. Rumus (14.5) mengarah ke
+
+$$R_{1}=\left\{ x:x\leq \frac{1}{3}\left ( 4-\sqrt{4+6log(2)} \right ) atau x\geq \frac{1}{3}\left ( 4+\sqrt{4+6log(2)} \right )\right\},$$ $$R_{2}=\mathbb{R}\setminus R_{1}.$$
+
+Situasi ini ditunjukkan pada Gambar 14.1.
+
+Situasinya disederhanakan dalam kasus varians yang sama $\sigma _{1}=\sigma _{2}.$ Yang diskriminan aturan (14.5) maka $(untuk \mu _{1}<\mu _{2})$
+
+$$x \to \prod _{1}, jika x\epsilon R_{1}=\left\{ x:x\leq \frac{1}{2}(\mu _{1}+\mu _{2})\right\},$$ $$x\to \prod _{2}, jika x\epsilon R_{2}=\left\{ x:x>\frac{1}{2}(\mu _{1}+\mu _{2})\right\}.$$
+
+<p style="text-align: justify;">
+Teorema14.2 menunjukkan bahwa aturan diskriminan ML untuk observasi multinormal adalah berhubungan erat dengan jarak Mahalanobis. Aturan diskriminatif didasarkan pada kombinasi linier dan termasuk dalam keluarga analisis diskriminan linier (LDA) metode.
+</p>
+
+**Teorema 14.2** *Misalkan* $\prod _{i}=N_{p}(\mu _{i},\sum ).$
+
+(a) *Aturan ML mengalokasikan* $x$ *ke* $\prod _{j}$, *dimana* $j\epsilon \left\{ 1,...,J\right\}$ *adalah nilai yang meminimalkan jarak Mahalanobis persegi anatara* $x$ *dan* $\mu _{i}$:
+
+$$\delta ^{2}(x, \mu _{i})=(x-\mu _{i})^{\top }\sum ^{-1}(x-\mu _{i}), i=1,...,J.$$
+
+(b) *Dalam kasus* $J=2$,
+
+$$x\in R_{1}\Leftrightarrow \alpha ^{\top }(X-\mu )\geq 0,$$
+
+*dimana* $\alpha =\sum ^{-1}(\mu _{1}-\mu _{2})$ dan $\mu =\frac{1}{2}(\mu _{1}+\mu _{2}).$
+
+*Bukti*. Bagian (a) dari teorema ini mengikuti langsung perbandingan kemungkinan.
+
+Untuk $J=2,$ bagian (a) menyatakan bahwa $x$ dialokasikan ke $\prod _{1}$ jika
+
+$$(x-\mu _{1})^{\top }\sum ^{-1}(x-\mu _{1})\leq (x-\mu _{2})^{\top }\sum ^{-1}(x-\mu _{2})$$
+
+Penataan ulang istilah mengarah ke
+
+$$-2\mu_{1}^{\top }\sum ^{-1}x+2\mu _{2}^{\top }\sum ^{-1}x+\mu _{1}^{\top }\sum ^{-1}\mu _{1}-\mu _{2}^{\top }\sum ^{-1}\mu _{2}\leq 0,$$
+
+equivalen dengan
+
+$$2(\mu _{2}-\mu _{1})^{\top }\sum ^{-1}x+(\mu _{1}-\mu _{2})^{\top }\sum ^{-1}(\mu _{1}+\mu _{2})\leq 0,$$ $$(\mu _{1}-\mu _{2})^{\top }\sum ^{-1}\left\{ x-\frac{1}{2}(\mu _{1}+\mu _{2})\right\}\geq 0,$$ $$\alpha ^{\top }(x-\mu )\geq 0.$$
+
+&nbsp;
+
+### *Aturan Diskriminan Bayes*
+
+<p style="text-align: justify;">
+Kita telah melihat contoh dimana pengetahuan sebelumnya tentang probabilitas klasifikasi ke dalam $\prod _{j}$ diasumsikan.Nyatakan probabilitas sebelumnya dengan $\pi _{j}$ dan perhatikan bahwa $\sum _{j}^{J}=\pi _{j}=1.$ Aturan diskriminasi Bayes mengalokasikan $x$ ke $\prod _{j}$ yang memberikan nilai $\pi _{i}f_{i}(x), \pi _{j}f_{j}(x)= max_{i}\pi _{i}f_{i}(x).$
+</p>
+
+<p style="text-align: justify;">
+Oleh karena itu, aturan diskriminan didefinisikan oleh $R_{j}=\left\{ x:\pi _{j}f_{j}(x)\geq \pi _{i}f_{i}(x) untuk i=1,...,J\right\}.$ Jelas sekali aturan Bayes identik dengan aturan diskriminan ML untuk $\pi _{j}=1/J.$
+</p>
+
+<p style="text-align: justify;">
+Modifikasi selanjutnya adalah mengalokasikan $x$ ke $\prod _{j}$ dengan probabilitas tertentu $\phi _{j}(x),$ sehingga $\sum_{j}^{J}=1\phi _{j}(x)=1$ untuk semua $x$. Ini disebut *aturan diskriminan acak*. Aturan diskriminan acak adalah generalisasi dari aturan diskriminan deterministik sejak saat itu
+</p>
+
+<p style="text-align: justify;">
+$$\phi _{j}(x)=\left\{\begin{matrix}
+1 & jika \pi _{j}f_{j}(x)=max_{i}\pi _{i}f_{i}(x), \\
+0 & lainnya \\
+\end{matrix}\right.$$ mencerminkan aturan deterministik. Aturan diskriminan manakah yang baik? Kita akan memerlukan ukuran perbandingan. Menunjukkan
+</p>
+
+$$p_{ij}=\int \phi _{i}(x)f_{i}(x)dx$$
+
+<p style="text-align: justify;">
+sebagai probabilitas mengalokasikan $x$ ke $\prod _{i}$ jika $x$ tersebut memang termasuk dalam $\prod _{j}$. Aturan diskriminan dengan probabilitas $p_{ij}$ sama baiknya dengan aturan diskriminan lainnya dengan probabilitas $p'_{ij}$ jika
+</p>
+
+$$p_{ii}\geq p'_{ii} untuk semua i=1,...,J.$$
+
+<p style="text-align: justify;">
+Kita menyebut aturan pertama lebih baik jika pertidaksamaan tegas pada (14.8) berlaku untuk setidaknya satu $i$. Sebuah aturan diskriminan disebut *dapat diterima* jika tidak ada aturan diskriminan yang lebih baik.
+</p>
+
+**Teorema 14.3** *Semua aturan diskriminan Bayes (termasuk aturan ML) dapat diterima*.
+
+&nbsp;
+
+### *Kemungkinan Kesalahan Klasifikasi untuk aturan ML (J=2)*
+
+<p style="text-align: justify;">
+Misalkan $\prod_{i}=N_{p}(\mu _{i},\sum ).$ Dalam kasus dua kelompok, tidak sulit untuk menurunkannya kemungkinan kesalahan klasifikasi untuk aturan diskriminan ML. Misalnya saja $p_{12}=P(x\in R_{1}|\prod _{2}).$ Berdasarkan bagian (b) dalam Teorema 14.2 kita punya
+</p>
+
+$$p_{12}=P\left\{ \alpha ^{\top }(x-\mu )>0|\prod ^{2}\right\}.$$
+
+<p style="text-align: justify;">
+Jika $X\in R_{2},\alpha ^{\top }(X-\mu )\sim N\left ( -\frac{1}{2}\delta ^{2},\delta ^{2} \right )$ dimana $\delta ^{2}=(\mu _{1}-\mu _{2})^{\top }\sum ^{-1}(\mu _{1}-\mu _{2})$ adalah kuadrat jarak Mahalanobis antara dua populasi, kita peroleh
+</p>
+
+$$p_{12}=\Phi \left ( -\frac{1}{2}\delta  \right ).$$
+
+<p style="text-align: justify;">
+Demikian pula peluang untuk diklasifikasikan ke dalam populasi $2$ meskipun $x$ berasal dari $\prod _{1}$ sama dengan $p_{21}=\Phi \left ( -\frac{1}{2}\delta \right ).$
+</p>
+
+&nbsp;
+
+### *Klasifikasi dengan Matriks Kovariansi Berbeda*
+
+<p style="text-align: justify;">
+*ECM* minimum bergantung pada rasio kepadatan $\frac{f_{1}(x)}{f_{2}(x)}$ atau setara di perbedaan $log\left\{ f_{1}(x)\right\}-log\left\{ f_{2}(x)\right\}$. Ketika kovarians untuk kedua fungsi kepadatan berbeda, aturan alokasi menjadi lebih rumit:
+</p>
+
+$$R_{1}=\left\{ x:-\frac{1}{2}x^{\top }(\sum_{1}^{-1}-\sum_{2}^{-1})x+(\mu _{1}^{\top }\sum_{1}^{-1}-\mu _{2}^{\top }\sum_{2}^{-1})x-k\geq log\left [ \left ( \frac{C(1|2)}{C(2|1)} \right )\left ( \frac{\pi _{2}}{\pi _{1}} \right ) \right ]\right\},$$ $$R_{1}=\left\{ x:-\frac{1}{2}x^{\top }(\sum_{1}^{-1}-\sum_{2}^{-1})x+(\mu _{1}^{\top }\sum_{1}^{-1}-\mu _{2}^{\top }\sum_{2}^{-1})x-k< log\left [ \left ( \frac{C(1|2)}{C(2|1)} \right )\left ( \frac{\pi _{2}}{\pi _{1}} \right ) \right ]\right\}$$
+
+<p style="text-align: justify;">
+dimana $k=\frac{1}{2}log\left ( \frac{|\sum _{1}|}{|\sum _{2}|} \right )+\frac{1}{2}\left ( \mu _{1}^{\top }\sum _{1}^{-1}\mu _{1}-\mu _{2}^{\top }\sum _{2}^{-1}\mu _{2} \right ).$ Wilayah klaasifikasinya adalah ditentukan oleh *fungsi kuadrat*. Oleh karena itu mereka termasuk dalam keluarga Quadratic Metode Analisis Diskriminan (QDA). *Aturan klasifikasi kuadrat* ini bertepatan dengan aturan yang digunakan ketika $\sum _{1}=\sum _{2}$ karena sejak $\frac{1}{2}x^{\top }(\sum _{1}^{-1}-\sum _{2}^{-1})x$ menghilang.
+</p>
+
+&nbsp;
+
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+| # Ringkasan                                                                                                                                                                                                                                                                              |         |
+|                                                                                                                                                                                                                                                                                          |         |
+| -   Analisis diskriminan adalah serangkaian metode yang digunakan untuk membedakan kelompok-kelompok dalam data dan mengalokasikan pengamatan baru ke dalam kelompok-kelompok yang sudah ada.                                                                                            |         |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+| -   Mengingat data berasal dari populasi $\prod _{j}$ dengan kepadatan $f_{f},j=1,...,J$ , aturan diskriminan kemungkinan maksimum (aturan ML) mengalokasikan observasi $x$ ke populasi $\prod _{j}$ yang memiliki kemungkinan maksimum $L_{j} (x)=f_{j}(x)=max_{i}f_{i}(x)$. \|         |         |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+| -   Mengingat probabilitas sebelumnya $\pi _{j}$ untuk populasi $\prod _{j}$, aturan diskriminan Bayes mengalokasikan observasi $x$ ke populasi $\prod _{j}$ yang memaksimalkan $\pi _{i} f_{i}(x)$ terhadap $i$. Semua aturan diskriminan Bayes (termasuk aturan ML) dapat diterima. \| |         |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+| -   Untuk aturan ML dan $J = 2$ populasi normal, probabilitas kesalahan klasifikasi diberikan oleh $p_{12}=p_{21}=\Phi \left ( -\frac{1}{2}\delta \right )$ dimana δ adalah jarak Mahalanobis antara dua populasi.                                                                       |         |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+| -   Klasifikasi dua populasi normal dengan matriks kovarians berbeda (aturan ML) menghasilkan wilayah yang ditentukan oleh fungsi kuadrat.                                                                                                                                               |         |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
+| -   Aturan diskriminan yang diinginkan memiliki biaya kesalahan klasifikasi (*ECM*) yang rendah.                                                                                                                                                                                         |         |
++------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------+
