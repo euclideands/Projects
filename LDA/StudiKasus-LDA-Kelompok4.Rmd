@@ -300,6 +300,7 @@ tr[tr == 1] = "red"
 tr[tr == 2] = "black"
 ```
 
+
 ```{r}
 # Scatterplot for the first two PCs displaying the two clusters
 plot(dav[, 1], dav[, 2], pch = tree, col = tr, xlab = "PC1", ylab = "PC2", main = "first vs. second PC", 
