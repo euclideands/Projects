@@ -1,0 +1,134 @@
+---
+Judul: Analisis_Korespondensi
+Nama: Nabhan Nabilah
+NIM: null
+output: pdf_document
+---
+
+```{r}
+# Clear all variables
+rm(list = ls(all = TRUE))
+graphics.off()
+```
+
+Soal:
+
+Buatlah analisis korespondensi berdasarkan data **JENIS PEKERJAAN** dan **TINGKAT PENDIDIKAN** data berikut:
+
+![](images/photo_2023-11-13_23-36-09.jpg)
+
+# **Import Packages**
+
+```{r}
+library(gplots)
+library(ggplot2)
+library(FactoMineR)
+library(factoextra)
+```
+
+# **Load Dataset**
+
+```{r}
+df <- data.frame(
+  Jenis_Pekerjaan = c("Pertanian", "Industri", "Jasa", 
+                      "Properti", "Listrik"),
+  SD = c(1200, 500, 300, 300, 200),
+  SMP = c(300, 400, 500, 300, 300),
+  SMA = c(200, 700, 600, 300, 350),
+  PT = c(200, 400, 1000, 700, 450)
+)
+```
+
+```{r}
+df
+```
+
+```{r}
+df_factors <- df[, -1]
+factors <- as.matrix(df_factors)
+
+dimnames(factors) <- 
+  list(Jenis_Pekerjaan = c("Pertanian", "Industri","Jasa", 
+                           "Properti", "Listrik"),
+       Tingkat_Pendidikan = c("SD", "SMP", "SMA", "PT")
+       )
+factors
+```
+
+# **EDA**
+
+```{r}
+dt <- as.table(as.matrix(factors))
+dt
+```
+
+```{r}
+balloonplot(t(dt), 
+            main="Pekerjaan berdasarkan tingkat pendidikan", 
+            xlab="", 
+            ylab="",
+            label=FALSE, 
+            show.margins=FALSE)
+```
+
+Observasi:
+
+Terlihat bahwa pekerjaan di bidang pertanian didominasi oleh lulusan SD, industri oleh lulusan SMA, jasa dan properti oleh lulusan PT, sedangkan untuk pekerjaan di bidang listrik terlihat tidak didominasi oleh lulusan manapun karena baik lulusan SD hingga PT proporsinya terlihat tidak berbeda jauh.
+
+Untuk data yang tergolong kecil, kita dapat menggunakan nilai Chi-square untuk mengevaluasi apakah terdapat ketergantungan yang signifikan antara kategori baris dan kolom
+
+```{r}
+chisq.test(factors)
+```
+
+Dengan p-value yang sangat kecil (\< 0.05) maka kita dapat menyimpulkan bahwa terdapat ketergantungan yang signifikan antara kategori baris dan kolom dalam tabel kontingensi. Dengan kata lain, terdapat hubungan yang signifikan antara "Jenis_Pekerjaan" dan "Tingkat_Pendidikan" dalam data yang diamati.
+
+# **Correspondence Analysis**
+
+```{r}
+res.ca <- CA(factors, graph = FALSE)
+print(res.ca)
+```
+
+```{r}
+eig.val <- get_eigenvalue(res.ca)
+eig.val_df <- data.frame(Eigenvalue = eig.val)
+
+# Print or view the data frame
+eig.val_df
+```
+
+```{r}
+fviz_screeplot(res.ca, addlabels = TRUE, ylim = c(0, 100))
+```
+
+Terdapat 5 baris dan 4 kolom.
+
+Jika datanya acak, nilai yang diharapkan dari nilai eigen untuk setiap sumbu adalah 1/(nrow(factors)-1) = 1/4 = 25% dalam baris.
+
+Demikian pula, sumbu rata-rata harus memperhitungkan 1/(ncol(factors)-1) = 1/3 = 33,33% dalam 4 kolom.
+
+```{r}
+fviz_screeplot(res.ca) +
+ geom_hline(yintercept=33.33, linetype=2, color="red")
+```
+
+```{r}
+fviz_ca_biplot(res.ca, repel=TRUE)
+```
+
+# **Evaluation**
+
+```{r}
+# Contributions of rows to dimension 1
+fviz_contrib(res.ca, choice = "row", axes = 1, top = 10)
+# Contributions of rows to dimension 2
+fviz_contrib(res.ca, choice = "row", axes = 2, top = 10)
+```
+
+```{r}
+# Contributions of rows to dimension 1
+fviz_contrib(res.ca, choice = "col", axes = 1, top = 10)
+# Contributions of rows to dimension 2
+fviz_contrib(res.ca, choice = "col", axes = 2, top = 10)
+```
